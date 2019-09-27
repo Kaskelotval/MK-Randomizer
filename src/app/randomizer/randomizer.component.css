@@ -28,15 +28,35 @@
   background: linear-gradient(135deg, #6b73ff 10%, #000dff 100%);
   padding: 4px;
 }
-.buttonInner {
-  background: #313131;
-  font-size: 25px;
-  text-transform: uppercase;
-  font-weight: 500;
-  color: #fff;
-  padding: 2rem;
+.randomButton {
   text-align: center;
-  cursor: pointer;
+  -webkit-animation-duration: 4.5s;
+  animation-duration: 4.5s;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-name: shimmer;
+  animation-name: shimmer;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  background: linear-gradient(
+      120deg,
+      #f3c600 0,
+      #f3c600 10%,
+      #ffde4b 17%,
+      #f3c600 24%,
+      #f3c600 100%
+    ) -300px 0 no-repeat #f3c600;
+  background-size: 400px 104px;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: "Open Sans", Arial, sans-serif;
+  font-weight: 700;
+  font-size: 1em;
+  border-radius: 8px;
+  padding: 15px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .buttonInner:active {
@@ -51,5 +71,9 @@
 }
 
 .block {
+  display: block;
+}
+
+.randomizerBox {
   display: block;
 }

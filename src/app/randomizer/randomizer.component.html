@@ -1,7 +1,7 @@
 <div class="lock">
-  <div class="buttonOuter" (click)="getRandomTracks()">
-    <div class="buttonInner">Randomize</div>
-  </div>
+  <button class="randomButton mat-flat-button" (click)="getRandomTracks()">
+    Randomize
+  </button>
   <div *ngIf="mobile" class="images mobile">
     <div
       class="trackBox trackBoxMobile"

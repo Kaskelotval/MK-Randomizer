@@ -59,6 +59,7 @@ export class RandomizerComponent implements OnInit {
   }
 
   public getRandomTracks() {
+    console.log("randomizing tracks");
     this.chosenTracks = [];
     let tournamentNumber;
     let trackNumber;

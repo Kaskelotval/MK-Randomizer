@@ -1,0 +1,112 @@
+{
+  "tournaments": [
+    {
+      "name": "Mushroom Cup",
+      "tracks": [
+        { "name": "Mario Kart Stadium" },
+        { "name": "Water Park" },
+        { "name": "Sweet Sweet Canyon" },
+        { "name": "Thwomp Ruins" }
+      ]
+    },
+    {
+      "name": "Flower Cup",
+      "tracks": [
+        { "name": "Mario Circuit" },
+        { "name": "Toad Harbor" },
+        { "name": "Twisted Mansion" },
+        { "name": "Shy Guy Falls" }
+      ]
+    },
+    {
+      "name": "Star Cup",
+      "tracks": [
+        { "name": "Sunshine Airport" },
+        { "name": "Dolphin Shoals" },
+        { "name": "Electrodrome" },
+        { "name": "Mount Wario" }
+      ]
+    },
+    {
+      "name": "Special Cup",
+      "tracks": [
+        { "name": "Cloudtop Cruise" },
+        { "name": "Bone-Dry Dunes" },
+        { "name": "Bowser's Castle" },
+        { "name": "Rainbow Road" }
+      ]
+    },
+    {
+      "name": "Shell Cup",
+      "tracks": [
+        { "name": "Moo Moo Meadows" },
+        { "name": "GBA Mario Circuit" },
+        { "name": "Cheep Cheep Beach" },
+        { "name": "Toad's Turnpike" }
+      ]
+    },
+    {
+      "name": "Banana Cup",
+      "tracks": [
+        { "name": "Dry Dry Desert" },
+        { "name": "Donut Plains 3" },
+        { "name": "Royal Raceway" },
+        { "name": "DK Jungle" }
+      ]
+    },
+    {
+      "name": "Leaf Cup",
+      "tracks": [
+        { "name": "Wario Stadium" },
+        { "name": "Sherbet Land" },
+        { "name": "Music Park" },
+        { "name": "Yoshi Valley" }
+      ]
+    },
+    {
+      "name": "Lightning Cup",
+      "tracks": [
+        { "name": "Tick-Tock Clock" },
+        { "name": "Piranha Plant Slide" },
+        { "name": "Grumble Volcano" },
+        { "name": "N64 Rainbow Road" }
+      ]
+    },
+    {
+      "name": "Egg Cup",
+      "tracks": [
+        { "name": "Yoshi Circuit" },
+        { "name": "Excitebike Arena" },
+        { "name": "Dragon Driftway" },
+        { "name": "Mute City" }
+      ]
+    },
+    {
+      "name": "Triforce Cup",
+      "tracks": [
+        { "name": "Wario's Gold Mine" },
+        { "name": "SNES Rainbow Road" },
+        { "name": "Ice Ice Outpost" },
+        { "name": "Hyrule Circuit" }
+      ]
+    },
+    {
+      "name": "Crossing Cup",
+      "tracks": [
+        { "name": "Baby Park" },
+        { "name": "Cheese Land" },
+        { "name": "Wild Woods" },
+        { "name": "Animal Crossing" }
+      ]
+    },
+    {
+      "name": "Bell Cup",
+      "tracks": [
+        { "name": "Neo Bowser City" },
+        { "name": "Ribbon Road" },
+        { "name": "Super Bell Subway" },
+        { "name": "Big Blue" }
+      ]
+    }
+  ]
+}

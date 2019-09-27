@@ -1,0 +1,40 @@
+<div class="lock">
+  <div class="buttonOuter" (click)="getRandomTracks()">
+    <div class="buttonInner">Randomize</div>
+  </div>
+  <div *ngIf="mobile" class="images mobile">
+    <div
+      class="trackBox trackBoxMobile"
+      *ngFor="let track of getListOfTracks()"
+    >
+      <img
+        class="tournamentImage"
+        src="{{ getImageByName(getTournament(track.tournamentNumber).name) }}"
+      />
+      <img
+        class="trackImage"
+        src="{{
+          getImageByName(
+            getTrack(track.tournamentNumber, track.trackNumber).name
+          )
+        }}"
+      />
+    </div>
+  </div>
+  <div *ngIf="!mobile" class="images">
+    <div class="trackBox" *ngFor="let track of getListOfTracks()">
+      <img
+        class="tournamentImage"
+        src="{{ getImageByName(getTournament(track.tournamentNumber).name) }}"
+      />
+      <img
+        class="trackImage"
+        src="{{
+          getImageByName(
+            getTrack(track.tournamentNumber, track.trackNumber).name
+          )
+        }}"
+      />
+    </div>
+  </div>
+</div>

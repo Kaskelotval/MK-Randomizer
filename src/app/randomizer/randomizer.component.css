@@ -1,0 +1,55 @@
+.images {
+  display: flex;
+  justify-content: center;
+}
+.mobile {
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+  width: 170px;
+}
+
+.trackImage {
+  position: relative;
+  width: 170px;
+}
+
+.tournamentImage {
+  position: relative;
+  width: 50px;
+  left: -25px;
+  top: 25px;
+  z-index: 2;
+}
+.buttonOuter {
+  min-width: fit-content;
+  padding: 1rem;
+  position: relative;
+  background: linear-gradient(135deg, #6b73ff 10%, #000dff 100%);
+  padding: 4px;
+}
+.buttonInner {
+  background: #313131;
+  font-size: 25px;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: #fff;
+  padding: 2rem;
+  text-align: center;
+  cursor: pointer;
+}
+
+.buttonInner:active {
+  background: #474747;
+}
+.trackBox {
+  width: 170px;
+  margin-left: 30px;
+}
+.trackBoxMobile {
+  margin-left: 0;
+}
+
+.block {
+  display: block;
+}

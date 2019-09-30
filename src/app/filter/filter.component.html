@@ -1,0 +1,14 @@
+<div class="block">
+  <mat-selection-list>
+    <div *ngFor="let tournament of this.data">
+      <h3>{{ tournament.name }}</h3>
+      <mat-list-option
+        *ngFor="let track of tournament.tracks"
+        (onselect)="addToBanList(track.name)"
+        [value]="trackIsIncluded(track.name)"
+        selected="trackIsIncluded(track.name)"
+        >{{ track.name }}
+      </mat-list-option>
+    </div>
+  </mat-selection-list>
+</div>

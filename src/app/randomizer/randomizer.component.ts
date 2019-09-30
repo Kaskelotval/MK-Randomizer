@@ -1,5 +1,5 @@
-import { Component, OnInit } from "@angular/core";
-import * as data from "./data.json";
+import { Component, OnInit, Input } from "@angular/core";
+import { MatListOption } from "@angular/material";
 
 @Component({
   selector: "app-randomizer",
@@ -7,9 +7,9 @@ import * as data from "./data.json";
   styleUrls: ["./randomizer.component.css"]
 })
 export class RandomizerComponent implements OnInit {
+  @Input() data: any;
   constructor() {}
 
-  private readonly tournaments = data.tournaments;
   private readonly tracksToPlay = 4;
 
   private tournamentAmount = 0;
@@ -19,8 +19,9 @@ export class RandomizerComponent implements OnInit {
   public mobile = false;
 
   ngOnInit() {
-    this.tournamentAmount = this.tournaments.length;
-    this.tracksTotal = this.tournaments
+    console.log(this.data);
+    this.tournamentAmount = this.data.length;
+    this.tracksTotal = this.data
       .map(tournament => {
         return tournament.tracks.length;
       })
@@ -32,23 +33,25 @@ export class RandomizerComponent implements OnInit {
       this.mobile = true;
     }
   }
-  onResize() {
-    if (window.screen.width <= 700) {
+
+  onResize(event) {
+    if (event.target.innerWidth <= 700) {
       this.mobile = true;
     } else {
       this.mobile = false;
     }
   }
+
   public getListOfTracks() {
     return this.chosenTracks;
   }
 
   public getTournament(tournamentIdx) {
-    return this.tournaments[tournamentIdx];
+    return this.data[tournamentIdx];
   }
 
   public getTrack(tournamentIdx, trackIdx) {
-    return this.tournaments[tournamentIdx].tracks[trackIdx];
+    return this.data[tournamentIdx].tracks[trackIdx];
   }
 
   public getImageByName(name: string) {

@@ -2,7 +2,7 @@
   <button class="randomButton mat-flat-button" (click)="getRandomTracks()">
     Randomize
   </button>
-  <div (keyup)="onKey($event)" *ngIf="mobile" class="images mobile">
+  <div *ngIf="mobile" class="images mobile">
     <div
       class="trackBox trackBoxMobile"
       *ngFor="let track of getListOfTracks()"

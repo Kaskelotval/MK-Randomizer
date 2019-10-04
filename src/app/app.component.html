@@ -1,6 +1,12 @@
 <div role="main">
   <!-- Randomizer-->
-  <app-filter [data]="this.filteredData"></app-filter>
-  <app-randomizer [data]="this.filteredData"></app-randomizer>
+  <app-filter
+    [data]="this.filteredData"
+    (filterData)="updateBanList($event)"
+  ></app-filter>
+  <app-randomizer
+    [data]="this.filteredData"
+    [bannedTracks]="this.banList"
+  ></app-randomizer>
 </div>
 <router-outlet></router-outlet>

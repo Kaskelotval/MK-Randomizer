@@ -1,5 +1,4 @@
-import { Component, OnInit, Input } from "@angular/core";
-import { MatListOption } from "@angular/material";
+import { Component, OnInit, Input, OnChanges } from "@angular/core";
 
 @Component({
   selector: "app-randomizer",
@@ -8,46 +7,27 @@ import { MatListOption } from "@angular/material";
 })
 export class RandomizerComponent implements OnInit {
   @Input() data: any;
+  @Input() bannedTracks: any[];
   constructor() {}
 
   private readonly tracksToPlay = 4;
 
-  private tournamentAmount = 0;
   private tracksTotal = 0;
   private chosenTracks = [];
+  private maxLoops = 200;
 
   public mobile = false;
 
   ngOnInit() {
-    console.log(this.data);
-    this.tournamentAmount = this.data.length;
-    this.tracksTotal = this.data
-      .map(tournament => {
-        return tournament.tracks.length;
-      })
-      .reduce((x, y) => {
-        return x + y;
-      });
-
-    if (window.screen.width <= 700) {
-      this.mobile = true;
-    }
-  }
-
-  onResize(event) {
-    if (event.target.innerWidth <= 700) {
-      this.mobile = true;
-    } else {
-      this.mobile = false;
-    }
+    this.tracksTotal = this.data.length;
   }
 
   public getListOfTracks() {
     return this.chosenTracks;
   }
 
-  public getTournament(tournamentIdx) {
-    return this.data[tournamentIdx];
+  public getTournament(tournamentName) {
+    return this.data[tournamentName];
   }
 
   public getTrack(tournamentIdx, trackIdx) {
@@ -55,7 +35,9 @@ export class RandomizerComponent implements OnInit {
   }
 
   public getImageByName(name: string) {
-    return "../../assets/images/" + name.replace(/ /g, "_") + ".png";
+    return (
+      "../../assets/images/" + name.replace(/ /g, "_").replace("'", "") + ".png"
+    );
   }
   private getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max));
@@ -64,27 +46,21 @@ export class RandomizerComponent implements OnInit {
   public getRandomTracks() {
     console.log("randomizing tracks");
     this.chosenTracks = [];
-    let tournamentNumber;
     let trackNumber;
     let trackObject;
-
+    let loops = 0;
     do {
-      tournamentNumber = this.getRandomInt(this.tournamentAmount);
-      trackNumber = this.getRandomInt(this.getRandomInt(4));
-      trackObject = {
-        tournamentNumber: tournamentNumber,
-        trackNumber: trackNumber
-      };
-      if (
-        this.chosenTracks.find(
-          obj =>
-            obj.tournamentNumber == trackObject.tournamentNumber &&
-            obj.trackNumber == trackObject.trackNumber
-        )
-      ) {
+      trackNumber = this.getRandomInt(this.getRandomInt(this.tracksTotal));
+      trackObject = this.data[trackNumber];
+      if (this.chosenTracks.find(obj => obj.name == trackObject.name)) {
+        console.log("Already in list");
+      } else if (this.bannedTracks.find(obj => obj.name == trackObject.name)) {
+        console.log(trackObject.name + " is banned");
       } else {
         this.chosenTracks.push(trackObject);
       }
+      loops++;
+      if (loops > this.maxLoops) break;
     } while (this.chosenTracks.length < this.tracksToPlay);
   }
 }

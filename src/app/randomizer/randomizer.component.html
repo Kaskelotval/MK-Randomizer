@@ -1,40 +1,26 @@
-<div class="lock">
+<div class="block">
   <button class="randomButton mat-flat-button" (click)="getRandomTracks()">
     Randomize
   </button>
-  <div *ngIf="mobile" class="images mobile">
+  <div (keyup)="onKey($event)" *ngIf="mobile" class="images mobile">
     <div
       class="trackBox trackBoxMobile"
       *ngFor="let track of getListOfTracks()"
     >
       <img
         class="tournamentImage"
-        src="{{ getImageByName(getTournament(track.tournamentNumber).name) }}"
+        src="{{ getImageByName(track.tournament) }}"
       />
-      <img
-        class="trackImage"
-        src="{{
-          getImageByName(
-            getTrack(track.tournamentNumber, track.trackNumber).name
-          )
-        }}"
-      />
+      <img class="trackImage" src="{{ getImageByName(track.name) }}" />
     </div>
   </div>
   <div *ngIf="!mobile" class="images">
     <div class="trackBox" *ngFor="let track of getListOfTracks()">
       <img
         class="tournamentImage"
-        src="{{ getImageByName(getTournament(track.tournamentNumber).name) }}"
+        src="{{ getImageByName(track.tournament) }}"
       />
-      <img
-        class="trackImage"
-        src="{{
-          getImageByName(
-            getTrack(track.tournamentNumber, track.trackNumber).name
-          )
-        }}"
-      />
+      <img class="trackImage" src="{{ getImageByName(track.name) }}" />
     </div>
   </div>
 </div>

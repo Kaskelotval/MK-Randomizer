@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, Input } from "@angular/core";
+import { Component, OnInit, Output, Input, EventEmitter } from "@angular/core";
 
 @Component({
   selector: "app-filter",
@@ -7,40 +7,56 @@ import { Component, OnInit, Output, Input } from "@angular/core";
 })
 export class FilterComponent implements OnInit {
   @Input() data: any;
-  @Output() bannedTracks: any;
+  @Output() filterData = new EventEmitter<any[]>();
 
-  private originalData = this.data;
-  private trackList = [];
+  private originalData;
   private banList = [];
+  public showFilter: boolean;
+  private goodTracksFilter = [
+    { name: "Baby Park", tournament: "Crossing Cup" },
+    { name: "Toad's Turnpike", tournament: "Shell Cup" }
+  ];
+  public quickFilterIsUsed: boolean;
   constructor() {}
 
   ngOnInit() {
-    // console.log("Setting original Data to", this.data);
     this.originalData = this.data;
-    // console.log("Initializing tracklist as empty");
-    this.trackList = [];
-    // console.log("Building original tracklist");
-    this.createTracklist(this.originalData);
-    // console.log("original tracklist:");
-    // console.log(this.trackList);
+    this.showFilter = false;
+    this.quickFilterIsUsed = false;
   }
-  private createTracklist(tournaments) {
-    tournaments.map(tournament => {
-      tournament.tracks.map(track => {
-        this.trackList.push(track.name);
-      });
-    });
+  public getImageByName(name: string) {
+    return (
+      "../../assets/images/" + name.replace(/ /g, "_").replace("'", "") + ".png"
+    );
   }
   public addToBanList(trackName) {
     console.log("pushing " + trackName);
     this.banList.push(trackName);
   }
-
-  public trackIsIncluded(trackName) {
-    return this.banList.find(name => {
-      return name == trackName;
+  public getTrackList() {
+    return this.originalData;
+  }
+  public trackIsBanned(trackName) {
+    return this.banList.find(track => {
+      return track.name == trackName;
     })
       ? false
       : true;
+  }
+
+  public setFilter() {
+    this.banList = this.goodTracksFilter;
+    this.filterData.emit(this.banList);
+    this.quickFilterIsUsed = true;
+  }
+
+  public toggleFilter() {
+    this.showFilter = !this.showFilter;
+  }
+  public onTrackListControlChanged(list) {
+    this.quickFilterIsUsed = false;
+    this.banList = list.selectedOptions.selected.map(item => item.value);
+    console.log("banned tracks: ", this.banList);
+    this.filterData.emit(this.banList);
   }
 }

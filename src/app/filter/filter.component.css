@@ -1,6 +1,64 @@
 .block {
   background-color: white;
   color: black;
-  padding-left: 20px;
-  padding-right: 20px;
+}
+
+.trackImage {
+  position: relative;
+  width: 60px;
+}
+.list {
+  margin-right: 20px;
+  margin-left: 20px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.listOption {
+  width: 200px;
+  height: 50px;
+  border-radius: 10px;
+  margin: 10px;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  font-weight: bold;
+}
+
+.banned {
+  filter: opacity(20%);
+}
+::ng-deep.mat-pseudo-checkbox {
+  display: none !important;
+}
+.listText {
+  color: white;
+  display: block;
+  text-align: center;
+  padding-top: 20px;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+.divider {
+  height: 1px;
+  background-color: rgb(35, 35, 35);
+}
+.quickFilterBar {
+  background-color: black;
+}
+.bottomBar {
+  cursor: pointer;
+  background: linear-gradient(
+      120deg,
+      #f3c600 0,
+      #f3c600 10%,
+      #ffde4b 17%,
+      #f3c600 24%,
+      #f3c600 100%
+    )
+    no-repeat #f3c600;
+  height: 30px;
+  text-align: center;
+  padding-top: 10px;
+}
+[hidden] {
+  display: none !important;
 }

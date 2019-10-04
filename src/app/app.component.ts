@@ -11,7 +11,7 @@ export class AppComponent {
   title = "legit-mk-randomizer";
   private readonly data = allTracks.tracks;
   private readonly goodData = goodTracks.tracks;
-  private filteredData;
+  public filteredData;
   public banList = [];
 
   ngOnInit() {

@@ -20,6 +20,9 @@ export class RandomizerComponent implements OnInit {
 
   ngOnInit() {
     this.tracksTotal = this.data.length;
+    if (window.screen.width <= 700) {
+      this.mobile = true;
+    }
   }
 
   public getListOfTracks() {

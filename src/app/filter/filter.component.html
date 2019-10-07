@@ -1,5 +1,5 @@
 <div class="block">
-  <mat-selection-list class="list" #list [hidden]="!showFilter">
+  <mat-selection-list *ngIf="!mobile" class="list" #list [hidden]="!showFilter">
     <mat-list-option
       [class]="!trackIsBanned(track.name) ? 'listOption banned' : 'listOption'"
       *ngFor="let track of getTrackList()"
@@ -8,11 +8,28 @@
       [value]="track"
       [style.background]="'url(/img/' + getImageByName(track.name) + ')'"
     >
-      <!-- <img class="trackImage" src="{{ getImageByName(track.name) }}" /> -->
-      <span class="listText">{{ track.name }}</span>
+      <div class="listText">{{ track.name }}</div>
     </mat-list-option>
   </mat-selection-list>
-  <div class="bottomBar" (click)="toggleFilter()">Show filter</div>
+  <mat-selection-list *ngIf="mobile" class="list" #list [hidden]="!showFilter">
+    <mat-list-option
+      [class]="
+        !trackIsBanned(track.name)
+          ? 'listOption banned mobile'
+          : 'listOption mobile'
+      "
+      *ngFor="let track of getTrackList()"
+      (click)="onTrackListControlChanged(list)"
+      [selected]="!trackIsBanned(track.name)"
+      [value]="track"
+      [style.background]="'url(/img/' + getImageByName(track.name) + ')'"
+    >
+      <div class="listText">{{ track.name }}</div>
+    </mat-list-option></mat-selection-list
+  >
+  <div class="bottomBar" (click)="toggleFilter()">
+    Show filter
+  </div>
   <div class="divider"></div>
   <div class="bottomBar quickFilterBar" (click)="setFilter()">
     Quick Filter <span *ngIf="quickFilterIsUsed">(Active)</span>

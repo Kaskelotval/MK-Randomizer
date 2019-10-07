@@ -17,12 +17,16 @@ export class FilterComponent implements OnInit {
     { name: "Toad's Turnpike", tournament: "Shell Cup" }
   ];
   public quickFilterIsUsed: boolean;
+  public mobile = false;
   constructor() {}
 
   ngOnInit() {
     this.originalData = this.data;
     this.showFilter = false;
     this.quickFilterIsUsed = false;
+    if (window.screen.width <= 700) {
+      this.mobile = true;
+    }
   }
   public getImageByName(name: string) {
     return (

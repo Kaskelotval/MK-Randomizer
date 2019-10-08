@@ -53,7 +53,7 @@ export class RandomizerComponent implements OnInit {
     let trackObject;
     let loops = 0;
     do {
-      trackNumber = this.getRandomInt(this.getRandomInt(this.tracksTotal));
+      trackNumber = this.getRandomInt(this.tracksTotal);
       trackObject = this.data[trackNumber];
       if (this.chosenTracks.find(obj => obj.name == trackObject.name)) {
         console.log("Already in list");
